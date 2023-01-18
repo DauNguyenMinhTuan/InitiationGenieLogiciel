@@ -1,59 +1,75 @@
+from unittest import TestCase
+import unittest
 from arithmetics import *
-from unittest import TestCase, TestSuite, TestLoader, TextTestRunner
 
 
 class Test(TestCase):
-	def test_lcm1(self):
-		self.assertRaises(ValueError, lcm, 0, 0)
+    def setUp(self):
+        self.a = 60
+        self.b = 168
 
-	def test_lcm2(self):
-		self.assertRaises(ValueError, lcm, 0, 100)
 
-	def test_lcm3(self):
-		self.assertRaises(ValueError, lcm, 100, 0)
+    # Test lcm
+    def test_lcm_001(self):
+        self.assertTrue(0 == lcm(0, 0))
 
-	def test_lcm4(self):
-		self.assertTrue(200 == lcm(200, 200))
+    def test_lcm_002(self):
+        self.assertTrue(0 == lcm(0, self.a))
 
-	def test_lcm5(self):
-		self.assertTrue(840 == lcm(60, 168))
+    def test_lcm_003(self):
+        self.assertTrue(0 == lcm(self.a, 0))
 
-	def test_lcm_better1(self):
-		self.assertRaises(ValueError, lcm_better, 0, 0)
+    def test_lcm_004(self):
+        self.assertTrue(self.a == lcm(self.a, self.a))
 
-	def test_lcm_better2(self):
-		self.assertRaises(ValueError, lcm_better, 0, 100)
+    def test_lcm_005(self):
+        self.assertTrue(840 == lcm(self.a, self.b))
 
-	def test_lcm_better3(self):
-		self.assertRaises(ValueError, lcm_better, 100, 0)
 
-	def test_lcm_better4(self):
-		self.assertTrue(200 == lcm_better(200, 200))
+    # Test lcm_better
+    def test_lcm_better_001(self):
+        self.assertTrue(0 == lcm_better(0, 0))
 
-	def test_lcm_better5(self):
-		self.assertTrue(840 == lcm_better(60, 168))
+    def test_lcm_better_002(self):
+        self.assertTrue(0 == lcm_better(0, self.a))
 
-	def test_lcm_faulty1(self):
-		self.assertRaises(ValueError, lcm_faulty, 0, 0)
+    def test_lcm_better_003(self):
+        self.assertTrue(0 == lcm_better(self.a, 0))
 
-	def test_lcm_faulty2(self):
-		self.assertRaises(ValueError, lcm_faulty, 0, 100)
+    def test_lcm_better_004(self):
+        self.assertTrue(self.a == lcm_better(self.a, self.a))
 
-	def test_lcm_faulty3(self):
-		self.assertRaises(ValueError, lcm_faulty, 100, 0)
+    def test_lcm_better_005(self):
+        self.assertTrue(840 == lcm_better(self.a, self.b))
 
-	def test_lcm_faulty4(self):
-		self.assertFalse(200 == lcm_faulty(200, 200))
 
-	def test_lcm_faulty5(self):
-		self.assertTrue(840 == lcm_faulty(60, 168))
+    # Test lcm_faulty
+    def test_lcm_faulty_001(self):
+        self.assertTrue(0 == lcm_faulty(0, 0))
+
+    def test_lcm_faulty_002(self):
+        self.assertTrue(0 == lcm_faulty(0, self.a))
+
+    def test_lcm_faulty_003(self):
+        self.assertTrue(0 == lcm_faulty(self.a, 0))
+
+    def test_lcm_faulty_004(self):
+        self.assertTrue(self.a == lcm_faulty(self.a, self.a))
+
+    def test_lcm_faulty_005(self):
+        self.assertTrue(840 == lcm_faulty(self.a, self.b))
+
+    # Test main
+
 
 
 def suite():
-	suite = TestSuite()
-	suite.addTests(TestLoader().loadTestsFromTestCase(Test))
-	return suite
-
+    # Test suite
+    suite = unittest.TestSuite()
+    suite.addTests(
+        unittest.TestLoader().loadTestsFromTestCase(Test)
+    )
+    return suite
 
 if __name__ == '__main__':
-	TextTestRunner(verbosity=2).run(suite())
+    unittest.TextTestRunner(verbosity=2).run(suite())

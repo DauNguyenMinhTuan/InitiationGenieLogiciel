@@ -4,8 +4,6 @@ def print_lcm(l, p, q):
 	print(f'Least common multiple of {p} and {q} is {l}')
 
 def lcm(p, q):
-	if p == 0 or q == 0:
-		raise ValueError("p and q can not be 0")
 	p, q = abs(p), abs(q)
 	m = p * q
 	while True:
@@ -17,8 +15,6 @@ def lcm(p, q):
 			return m // p
 
 def lcm_better(p, q):
-	if p == 0 or q == 0:
-		raise ValueError("p and q can not be 0")
 	p, q = abs(p), abs(q)
 	m = p * q
 	h = p % q
@@ -30,8 +26,6 @@ def lcm_better(p, q):
 	return h
 
 def lcm_faulty(p, q):
-	if p == 0 or q == 0:
-		raise ValueError("p and q can not be 0")
 	r, m = 0, 0
 	r = p * q
 	while (r > p) and (r > q):
