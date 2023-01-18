@@ -1,6 +1,7 @@
 from unittest import TestCase
 import unittest
 from arithmetics import *
+from lcmException import LcmException
 
 
 class Test(TestCase):
@@ -11,13 +12,13 @@ class Test(TestCase):
 
     # Test lcm
     def test_lcm_001(self):
-        self.assertTrue(0 == lcm(0, 0))
+        self.assertRaises(LcmException, lcm, 0, 0)
 
     def test_lcm_002(self):
-        self.assertTrue(0 == lcm(0, self.a))
+        self.assertRaises(LcmException, lcm, 0, self.a)
 
     def test_lcm_003(self):
-        self.assertTrue(0 == lcm(self.a, 0))
+        self.assertRaises(LcmException, lcm, self.a, 0)
 
     def test_lcm_004(self):
         self.assertTrue(self.a == lcm(self.a, self.a))
@@ -28,13 +29,13 @@ class Test(TestCase):
 
     # Test lcm_better
     def test_lcm_better_001(self):
-        self.assertTrue(0 == lcm_better(0, 0))
+        self.assertRaises(LcmException, lcm_better, 0, 0)
 
     def test_lcm_better_002(self):
-        self.assertTrue(0 == lcm_better(0, self.a))
+        self.assertRaises(LcmException, lcm_better, 0, self.a)
 
     def test_lcm_better_003(self):
-        self.assertTrue(0 == lcm_better(self.a, 0))
+        self.assertRaises(LcmException, lcm_better, self.a, 0)
 
     def test_lcm_better_004(self):
         self.assertTrue(self.a == lcm_better(self.a, self.a))
@@ -45,16 +46,16 @@ class Test(TestCase):
 
     # Test lcm_faulty
     def test_lcm_faulty_001(self):
-        self.assertTrue(0 == lcm_faulty(0, 0))
+        self.assertRaises(LcmException, lcm_faulty, 0, 0)
 
     def test_lcm_faulty_002(self):
-        self.assertTrue(0 == lcm_faulty(0, self.a))
+        self.assertRaises(LcmException, lcm_faulty, 0, self.a)
 
     def test_lcm_faulty_003(self):
-        self.assertTrue(0 == lcm_faulty(self.a, 0))
+        self.assertRaises(LcmException, lcm_faulty, self.a, 0)
 
     def test_lcm_faulty_004(self):
-        self.assertTrue(self.a == lcm_faulty(self.a, self.a))
+        self.assertFalse(self.a == lcm_faulty(self.a, self.a))
 
     def test_lcm_faulty_005(self):
         self.assertTrue(840 == lcm_faulty(self.a, self.b))
